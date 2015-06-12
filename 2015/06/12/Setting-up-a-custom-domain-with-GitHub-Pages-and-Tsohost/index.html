@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Setting up a custom domain with GitHub Pages and Tsohost | Adam Knight</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Setting up a custom domain for GitHub pages is pretty straightforward, but there is an added wrinkle when using Tsohost which isn’t immediately obvious and cost me a nearly a week trying to solve it.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setting up a custom domain with GitHub Pages and Tsohost">
+<meta property="og:url" content="http://codeecho.co.uk/2015/06/12/Setting-up-a-custom-domain-with-GitHub-Pages-and-Tsohost/index.html">
+<meta property="og:site_name" content="Adam Knight">
+<meta property="og:description" content="Setting up a custom domain for GitHub pages is pretty straightforward, but there is an added wrinkle when using Tsohost which isn’t immediately obvious and cost me a nearly a week trying to solve it.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Setting up a custom domain with GitHub Pages and Tsohost">
+<meta name="twitter:description" content="Setting up a custom domain for GitHub pages is pretty straightforward, but there is an added wrinkle when using Tsohost which isn’t immediately obvious and cost me a nearly a week trying to solve it.">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/css/images/logo.png); }
+    </style>
+  
+
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Software Developer</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="q" value="site:http://codeecho.co.uk"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/How-To/">How To</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Setting-up-a-custom-domain-with-GitHub-Pages-and-Tsohost" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Setting up a custom domain with GitHub Pages and Tsohost
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/06/12/Setting-up-a-custom-domain-with-GitHub-Pages-and-Tsohost/" class="article-date">
+  <time datetime="2015-06-12T10:58:28.000Z" itemprop="datePublished">2015-06-12</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p>Setting up a custom domain for GitHub pages is pretty straightforward, but there is an added wrinkle when using Tsohost which isn’t immediately obvious and cost me a nearly a week trying to solve it.</p>
+<h3 id="Add_a_CNAME_file_to_your_Github_repository">Add a CNAME file to your Github repository</h3><p>The first thing you need to do is add a CNAME file to your Github repository. This must go in the root of your repository and the filename but be uppercase. This file must contain the custom domain to your repository’s root directory. For more information, see <a href="https://help.github.com/articles/adding-a-cname-file-to-your-repository" target="_blank" rel="external">“Adding a CNAME file to your repository.”</a></p>
+<h3 id="Configure_your_Tsohost_DNS_settings">Configure your Tsohost DNS settings</h3><p>Login to Tsohost, select My Domains&gt;Custom DNS from the right hand menu, and select the domain you want to setup from the drop down.</p>
+<p>To configure a subdomain (eg. www) to point to your GitHub Pages, add a new entry of type “CNAME”. Under the “Content” column add the url of your Github pages eg. “codeecho.github.io”. For more information, see <a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider" target="_blank" rel="external">“Tips for configuring a CNAME record with your DNS provider.”</a></p>
+<p>To configure the apex domain (the raw domain without any subdomain eg. codeecho.co.uk) to point to your GitHub Pages you will need to add 2 new entries of type “A” with “Content” values “192.30.252.153” and “192.30.252.154”. For more information, see <a href="https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider" target="_blank" rel="external">“Tips for configuring an A record with your DNS provider.”</a></p>
+<h3 id="Update_your_Tsohost_Nameservers">Update your Tsohost Nameservers</h3><p>This is the bit that I missed even though it tells you to do it on the page when editting your DNS settings, but who reads all that stuff.<br>By default the Tsohost Nameservers are set to “ns1.tsohost.co.uk” and “ns2.tsohost.co.uk” which assumes that the site you wish to serve is hosted by Tsohost. To use an external host such as Github Pages you need to set these values to “ns1.tsodns.com” and “ns2.tsodns.com”.</p>
+<h3 id="And_wait…">And wait…</h3><p>After you’ve completed all of the above you’ll have to wait for these changes to propogate. This can take up to a day, so be patient.</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://codeecho.co.uk/2015/06/12/Setting-up-a-custom-domain-with-GitHub-Pages-and-Tsohost/" data-id="ciatmuvhx0000nwu7ayjqpfzv" class="article-share-link">Share</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DevOps/">DevOps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tsohost/">Tsohost</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/codeecho" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="twitter" href="https://twitter.com/codeechodev" target="_blank"><i id="icon-twitter" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="google_plus" href="https://plus.google.com/u/2/116870795787793768489/posts" target="_blank"><i id="icon-google_plus" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">recents</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/How-To/">How To</a></p>
+              <p class="item-title"><a href="/2015/06/12/Setting-up-a-custom-domain-with-GitHub-Pages-and-Tsohost/" class="title">Setting up a custom domain with GitHub Pages and Tsohost</a></p>
+              <p class="item-date"><time datetime="2015-06-12T10:58:28.000Z" itemprop="datePublished">2015-06-12</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/How-To/">How To</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps/">DevOps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tsohost/">Tsohost</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">tag cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DevOps/" style="font-size: NaNpx;">DevOps</a><a href="/tags/GitHub/" style="font-size: NaNpx;">GitHub</a><a href="/tags/Tsohost/" style="font-size: NaNpx;">Tsohost</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2015 Adam Knight</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js" type="text/javascript"></script>
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
