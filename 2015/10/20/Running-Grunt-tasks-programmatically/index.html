@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Bootstrap | Adam Knight</title>
+  <title>Running Grunt tasks programmatically | Adam Knight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is the description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Adam Knight">
-<meta property="og:url" content="http://codeecho.co.uk/tags/Bootstrap/index.html">
+  <meta name="description" content="Running grunt tasks programmatically is extremely simple but it’s not obvious how to go about it at first. The key is the fact that the Gruntfile.js is just an ordinary javascript file which exports a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Running Grunt tasks programmatically">
+<meta property="og:url" content="http://codeecho.co.uk/2015/10/20/Running-Grunt-tasks-programmatically/index.html">
 <meta property="og:site_name" content="Adam Knight">
-<meta property="og:description" content="This is the description">
+<meta property="og:description" content="Running grunt tasks programmatically is extremely simple but it’s not obvious how to go about it at first. The key is the fact that the Gruntfile.js is just an ordinary javascript file which exports a">
+<meta property="og:image" content="/css/images/grunt.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Adam Knight">
-<meta name="twitter:description" content="This is the description">
+<meta name="twitter:title" content="Running Grunt tasks programmatically">
+<meta name="twitter:description" content="Running grunt tasks programmatically is extremely simple but it’s not obvious how to go about it at first. The key is the fact that the Gruntfile.js is just an ordinary javascript file which exports a">
   
   
 
@@ -112,60 +113,45 @@ ga('send', 'pageview');
           <section id="main">
             <div class="main-body-header">
 
-              <h1 class="header"><i class="icon" id="icon-tag"></i>tag : <em>Bootstrap</em></h1>
+              <h1 class="header">uncategorized</h1>
             </div>
             <div class="main-body-content">
               
-  
-  
-    
-    
+  <article id="post-Running-Grunt-tasks-programmatically" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year"><i class="icon" id="icon-calendar-o"></i>2015</a>
-        </div>
-        <div class="archives">
-    
-    
-    
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/06/29/Joe-Bloggs-a-clean-responsive-pure-HTML-CV-Resume-template/" class="thumbnail">
+        <header class="article-header">
+          
   
-    <span style="background-image:url(/css/images/joebloggs.png
-)" alt="Joe Bloggs - a clean, responsive, pure HTML CV/Resume template" class="thumbnail-image"></span>
+    <h1 class="article-title" itemprop="name">
+      Running Grunt tasks programmatically
+    </h1>
   
-</a>
 
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Projects/">Projects</a></p>
-        <p class="date"><time datetime="2015-06-29T08:56:01.000Z" itemprop="datePublished">2015-06-29</time></p>
+        </header>
+      
+      <!--p class="article-byline">
+        <a href="/2015/10/20/Running-Grunt-tasks-programmatically/" class="article-date">
+  <time datetime="2015-10-20T20:12:04.000Z" itemprop="datePublished">2015-10-20</time>
+</a>
+      </p-->
+      <div class="article-entry" itemprop="articleBody">
+        <p>Running grunt tasks programmatically is extremely simple but it’s not obvious how to go about it at first. The key is the fact that the Gruntfile.js is just an ordinary javascript file which exports a module. Therefore to load the Gruntfile all you need to do is require it and pass it grunt as the argument.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> grunt = <span class="built_in">require</span>(<span class="string">"grunt"</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">"Gruntfile.js"</span>)(grunt);</span><br></pre></td></tr></table></figure>
+<p>You can then invoke any grunt task from that file using grunt.tasks(tasks, options, callback). Where tasks is an array of tasks you want to run, options is a map of options (these correspond to the options available via the grunt cli), and callback is a standard node callback.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grunt.tasks([<span class="string">"build"</span>], &#123;&#125;, <span class="function"><span class="keyword">function</span><span class="params">(err)</span></span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(err || <span class="string">"Success"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="/css/images/grunt.png" alt="Grunt - The Javascript Task Runner" title="Grunt"></p>
+
       </div>
-      <h2 class="article-title">
-        <a href="/2015/06/29/Joe-Bloggs-a-clean-responsive-pure-HTML-CV-Resume-template/" class="title">Joe Bloggs - a clean, responsive, pure HTML CV/Resume template</a>
-      </h2>
-      <p class="article-excerpt">
+      <footer class="article-footer">
+        <a data-url="http://codeecho.co.uk/2015/10/20/Running-Grunt-tasks-programmatically/" data-id="cifztdnrn000ap4u717zj6049" class="article-share-link">Share</a>
         
         
-Joe Bloggs is 100% responsive and looks great on all devices. It’s built on the Bootstrap framework and written purely in HTML so can be run anywhere. Simply edit a single file with your details and 
-      </p>
+      </footer>
     </div>
   </article>
-
-    
-      </div>
-    
   
-  
-    </div></section>
-  
-
 
             </div>
           </section>
@@ -179,6 +165,19 @@ Joe Bloggs is 100% responsive and looks great on all devices. It’s built on th
       
     </ul>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/06/30/A-Java-library-for-generating-fixture-lists/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">A Java library for generating fixture lists</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
   
   <div class="widgets-container">
     
