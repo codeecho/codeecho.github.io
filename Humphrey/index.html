@@ -3,17 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Adam Knight</title>
+  <title>Humphrey | Adam Knight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is the description">
+  <meta name="description" content="Let Humphrey do the grunt work for you
+
+Humphrey is a tool which simplifies and speeds up using Grunt. It allows you to scaffold snippets of the grunt file and add them with a single command. To maxim">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Adam Knight">
-<meta property="og:url" content="http://codeecho.co.uk/index.html">
+<meta property="og:title" content="Humphrey">
+<meta property="og:url" content="http://codeecho.co.uk/Humphrey/index.html">
 <meta property="og:site_name" content="Adam Knight">
-<meta property="og:description" content="This is the description">
+<meta property="og:description" content="Let Humphrey do the grunt work for you
+
+Humphrey is a tool which simplifies and speeds up using Grunt. It allows you to scaffold snippets of the grunt file and add them with a single command. To maxim">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Adam Knight">
-<meta name="twitter:description" content="This is the description">
+<meta name="twitter:title" content="Humphrey">
+<meta name="twitter:description" content="Let Humphrey do the grunt work for you
+
+Humphrey is a tool which simplifies and speeds up using Grunt. It allows you to scaffold snippets of the grunt file and add them with a single command. To maxim">
   
   
 
@@ -116,158 +122,82 @@ ga('send', 'pageview');
           <section id="main">
             <div class="main-body-header">
 
-              <h1 class="header"><em class="page-title-link" data-url="home">home</em></h1>
+              <h1 class="header"><em class="page-title-link" data-url="/Humphrey/index.html">Humphrey</em></h1>
             </div>
             <div class="main-body-content">
               
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
+  <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
       
-<a href="/2015/10/23/Humphrey-Doing-the-Grunt-work-for-you/" class="thumbnail">
+        <header class="article-header">
+          
   
-    <span class="thumbnail-image thumbnail-none"></span>
+    <h1 class="article-title" itemprop="name">
+      Humphrey
+    </h1>
   
-</a>
 
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Projects/">Projects</a></p>
-        <p class="date"><time datetime="2015-10-23T07:10:16.000Z" itemprop="datePublished">2015-10-23</time></p>
+        </header>
+      
+      <!--p class="article-byline">
+        <a href="/Humphrey/index.html" class="article-date">
+  <time datetime="2015-10-23T07:27:38.000Z" itemprop="datePublished">2015-10-23</time>
+</a>
+      </p-->
+      <div class="article-entry" itemprop="articleBody">
+        <blockquote>
+<p><em>Let Humphrey do the grunt work for you</em></p>
+</blockquote>
+<p>Humphrey is a tool which simplifies and speeds up using Grunt. It allows you to scaffold snippets of the grunt file and add them with a single command. To maximise the resuse of these snippets Humphrey adds a bit of convention to the grunt file with a standard directory structure and lifecycle (see below).</p>
+<h3 id="Install_Humphrey">Install Humphrey</h3><p>Install humphrey globally using npm</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g humphrey</span><br></pre></td></tr></table></figure>
+<h3 id="The_lifecycle_of_a_Humphrey_project">The lifecycle of a Humphrey project</h3><ul>
+<li>setup - Tasks that need to be run to setup the project. eg installing dependencies</li>
+<li>validate - Tasks that validate the source code. eg. jshint</li>
+<li>build - Tasks that process the source files, and output the final result to the app directory. eg. processing SASS files, minifying javascript</li>
+<li>test - Test the build. eg. jasmine, mocha</li>
+<li>package - Package the contents of the app directory. eg. create a tar, war or zip file</li>
+<li>archive - Do something with the generated package eg. publish to an artifact repository</li>
+<li>deploy - Deploy the app somewhere. eg. S3, github pages</li>
+</ul>
+<p>Each stage in the lifecycle is available as a grunt task and each one will run all preceding lifecycle tasks first. The default grunt task is “test”, running this will run - setup, validate, build and test tasks.</p>
+<h3 id="Preparing_your_project">Preparing your project</h3><p>Before running Humphrey you first need to setup package.json</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<h3 id="Setting_up_your_project_with_Humphrey">Setting up your project with Humphrey</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">humphrey init</span><br></pre></td></tr></table></figure>
+<p>This will setup the Gruntfile.js and put in place the following directories structure.</p>
+<ul>
+<li>src - Your source code lives here</li>
+<li>test - Test cases live here</li>
+<li>build - This is where all compilation happens</li>
+<li>app - This is where the built files will end up</li>
+<li>dist - This is where any packages would end up</li>
+</ul>
+<p>build, app and dist directories should not be checked in to your version control system</p>
+<p>You can now build your project</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt build</span><br></pre></td></tr></table></figure>
+<p>At this stage this will simply copy the contents of the src directory to the app directory, without doing any processing.</p>
+<h3 id="Installing_modules_with_Humphrey">Installing modules with Humphrey</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">humphrey module:install jshint</span><br></pre></td></tr></table></figure>
+<p>This will install the jshint module, which will get applied at the validate stage in the build.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">humphrey module:install htmlmin</span><br></pre></td></tr></table></figure>
+<p>Now your html will be minified. This module runs during the build stage.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">humphrey module:install jade</span><br></pre></td></tr></table></figure>
+<p>This will install the jade module, to generate html from your jade files. This module also gets applied at the build stage. Because you already have the htmlmin module running during this stage you will be prompted for where in the chain you wish to put the jade module. In this case we want it to run before htmlmin so that our html generated from the jade files will also be minified.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">humphrey module:install serve</span><br></pre></td></tr></table></figure>
+<p>This will install the serve module. This module starts a local web server on the app directory. It watches the src directory and rebuilds the project and refreshes the browser on any changes. This module does not hook into any of the lifecycle stages, instead it adds it’s own grunt task.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt serve</span><br></pre></td></tr></table></figure>
+<p>A selection of other modules are available at <a href="https://github.com/codeecho/humphrey-modules" target="_blank" rel="external">https://github.com/codeecho/humphrey-modules</a></p>
+<p>For more information take a look at the <a href="https://github.com/codeecho/humphrey" target="_blank" rel="external">“README on Github”</a>.</p>
+<div class="btn-banner"><div class="btn-banner-inner"><br>    <a class="btn" target="_blank" href="https://github.com/codeecho/humphrey">View on Github</a><a class="btn" target="_blank" href="https://github.com/codeecho/humphrey">Fork on Github</a></div><br></div>
       </div>
-      <h2 class="article-title">
-        <a href="/2015/10/23/Humphrey-Doing-the-Grunt-work-for-you/" class="title">Humphrey - Doing the Grunt work for you</a>
-      </h2>
-      <p class="article-excerpt">
+      <footer class="article-footer">
+        <a data-url="http://codeecho.co.uk/Humphrey/index.html" data-id="cig3kryjj0013e8u7oabjexw3" class="article-share-link">Share</a>
         
-        Humphrey is a command line utility which simplifies and speeds up using Grunt. It allows you to scaffold snippets of the grunt file and add them with a single command. To maximise the resuse of these 
-      </p>
+        
+      </footer>
     </div>
   </article>
-
-    
   
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/10/20/Running-Grunt-tasks-programmatically/" class="thumbnail">
-  
-    <span style="background-image:url(/css/images/grunt.png
-)" alt="Running Grunt tasks programmatically" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/How-To/">How To</a></p>
-        <p class="date"><time datetime="2015-10-20T20:12:04.000Z" itemprop="datePublished">2015-10-20</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/10/20/Running-Grunt-tasks-programmatically/" class="title">Running Grunt tasks programmatically</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        Running grunt tasks programmatically is extremely simple but it’s not obvious how to go about it at first. The key is the fact that the Gruntfile.js is just an ordinary javascript file which exports a
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/06/30/A-Java-library-for-generating-fixture-lists/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Projects/">Projects</a></p>
-        <p class="date"><time datetime="2015-06-30T14:45:50.000Z" itemprop="datePublished">2015-06-30</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/06/30/A-Java-library-for-generating-fixture-lists/" class="title">A Java library for generating fixture lists</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        A Java library for generating fixture lists. Pass it any list of objects and it will return you a fixture list. It can handle an odd number of teams, incorporating byes into the fixtures, and can incl
-      </p>
-    </div>
-  </article>
-
-    
-  
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/06/29/Joe-Bloggs-a-clean-responsive-pure-HTML-CV-Resume-template/" class="thumbnail">
-  
-    <span style="background-image:url(/css/images/joebloggs.png
-)" alt="Joe Bloggs - a clean, responsive, pure HTML CV/Resume template" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Projects/">Projects</a></p>
-        <p class="date"><time datetime="2015-06-29T08:56:01.000Z" itemprop="datePublished">2015-06-29</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/06/29/Joe-Bloggs-a-clean-responsive-pure-HTML-CV-Resume-template/" class="title">Joe Bloggs - a clean, responsive, pure HTML CV/Resume template</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-Joe Bloggs is 100% responsive and looks great on all devices. It’s built on the Bootstrap framework and written purely in HTML so can be run anywhere. Simply edit a single file with your details and 
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/06/12/Setting-up-a-custom-domain-with-GitHub-Pages-and-Tsohost/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/How-To/">How To</a></p>
-        <p class="date"><time datetime="2015-06-12T10:58:28.000Z" itemprop="datePublished">2015-06-12</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/06/12/Setting-up-a-custom-domain-with-GitHub-Pages-and-Tsohost/" class="title">Setting up a custom domain with GitHub Pages and Tsohost</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        Setting up a custom domain for GitHub pages is pretty straightforward, but there is an added wrinkle when using Tsohost which isn’t immediately obvious and cost me a nearly a week trying to solve it.
-
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
-  
-
 
             </div>
           </section>
